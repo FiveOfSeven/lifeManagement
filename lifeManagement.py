@@ -10,13 +10,27 @@ ch = 0
 counter = 0
 blankString = "                                                 "
 startTime = time.time()
+pauseTime = 0
+pauseBool = False
+roundTime = time.time()
 
-while (ch != 113):
+stdscr.addstr(5, 0, "quit: q    pause: p", curses.A_REVERSE)
+
+while (ch != 113): #q
     curses.flushinp()
     curses.halfdelay(1)
     ch = stdscr.getch()
-    #currentTime = time.time()
-    currentTime = int(time.time() - startTime)
+    if (ch == 112): #p
+        ch = 0
+        if (pauseBool == False):
+            pauseBool = True
+        else:
+            pauseBool = False
+    pastTime = roundTime
+    roundTime = time.time()
+    if (pauseBool):
+        pauseTime = pauseTime + roundTime - pastTime
+    currentTime = int(time.time() - startTime - pauseTime)
     hours = currentTime // 3600
     leftoverHours = currentTime % 3600
     minutes = leftoverHours // 60

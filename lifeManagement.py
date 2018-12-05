@@ -9,12 +9,14 @@ stdscr.nodelay(1)
 ch = 0
 counter = 0
 blankString = "                                                 "
+startTime = time.time()
 
 while (ch != 113):
-    curses.halfdelay(10)
+    curses.flushinp()
+    curses.halfdelay(1)
     ch = stdscr.getch()
     #currentTime = time.time()
-    currentTime = counter
+    currentTime = int(time.time() - startTime)
     hours = currentTime // 3600
     leftoverHours = currentTime % 3600
     minutes = leftoverHours // 60

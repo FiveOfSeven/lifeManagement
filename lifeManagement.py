@@ -13,6 +13,10 @@ startTime = time.time()
 pauseTime = 0
 pauseBool = False
 roundTime = time.time()
+hours = 0
+minutes = 0
+seconds = 0
+prevHours = 0
 
 stdscr.addstr(5, 0, "quit: q    pause: p", curses.A_REVERSE)
 
@@ -32,6 +36,10 @@ while (ch != 113): #q
         pauseTime = pauseTime + roundTime - pastTime
     currentTime = int(time.time() - startTime - pauseTime)
     hours = currentTime // 3600
+    if (prevHours < hours):
+        prevHours = hours
+        with open('dataLifeManagement/hours.txt', 'a') as f:
+            f.write(str(hours))
     leftoverHours = currentTime % 3600
     minutes = leftoverHours // 60
     seconds = leftoverHours % 60

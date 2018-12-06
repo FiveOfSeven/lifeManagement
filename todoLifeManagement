@@ -3,6 +3,7 @@ was able to get input from user while the program can break out
 timer with quiting on q is working
 made it so timer keeps time accuratly and the keyboard is flushed each round
 made it so the timer can pause by pressing p
+saves hours when a new hour happens
 
 TODO:
 get a saving times to a file set up

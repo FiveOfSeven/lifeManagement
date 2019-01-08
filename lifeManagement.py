@@ -1,6 +1,7 @@
 import pygame
 pygame.init()
 beep = pygame.mixer.Sound('./dataLifeManagement/timesUp.wav')
+#beep.play()
 
 import time
 import curses
@@ -42,6 +43,8 @@ while (ch != 113): #q
     curses.flushinp()
     curses.halfdelay(1)
     ch = stdscr.getch()
+    pastTime = roundTime
+    roundTime = time.time()
     currentTime = int(time.time() - startTime - pauseTime)
     hours = currentTime // 3600
     if (ch == 112): #p
